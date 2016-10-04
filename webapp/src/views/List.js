@@ -79,7 +79,7 @@ class List extends Component {
             })
 		}, {
 			columnName: 'status',
-			displayName: '状态',
+			displayName: 'Status',
 			customComponent: React.createClass({
 				render: function() {
 					const status = this.props.data;

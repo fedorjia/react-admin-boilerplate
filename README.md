@@ -11,7 +11,7 @@
 
 then visit <http://localhost:3000> you will get it.
 
-![image](webapp/static/images/QQ20161004-0.jpg)
+![image](webapp/static/images/QQ20161004-1.jpg)
 
 
 # Production

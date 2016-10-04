@@ -49,16 +49,19 @@ function __render() {
 /*******************************************************************
  *  launch
 /*******************************************************************/
-__globals();
 
-let user = sessionStorage.getItem('local-user');
-if(!user) {
-	__render();
-	browserHistory.push('/login');
-} else {
-	// login
-	http.get('/static/assets/login.json').then((result) => {
-		common.setupApp(result.data);
+$(function() {
+	__globals();
+
+	let user = sessionStorage.getItem('local-user');
+	if(!user) {
 		__render();
-	});
-}
+		browserHistory.push('/login');
+	} else {
+		// login
+		http.get('/static/assets/login.json').then((result) => {
+			common.setupApp(result.data);
+			__render();
+		});
+	}
+});

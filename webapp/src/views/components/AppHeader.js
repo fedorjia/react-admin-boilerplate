@@ -19,7 +19,9 @@ class AppHeader extends Component {
 			<div className="navbar-custom-menu">
 				<ul className="nav navbar-nav">
 					<li>
-						<a style={{ cursor: 'pointer' }} data-toggle="control-sidebar"><i className="fa fa-sign-out" onClick={ this.onSignout }/></a>
+						<a style={{ cursor: 'pointer' }} data-toggle="control-sidebar" onClick={ this.onSignout }>
+							<i className="fa fa-sign-out"/>
+						</a>
 					</li>
 				</ul>
 			</div>

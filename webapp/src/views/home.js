@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
 
+	componentDidMount() {
+		// fix
+		$.AdminLTE.layout.fix();
+		$.AdminLTE.layout.fixSidebar();
+	}
+
 	render() {
 		return (
 			<div className="home-view">

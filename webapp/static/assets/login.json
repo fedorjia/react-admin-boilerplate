@@ -1,0 +1,79 @@
+{
+  "success": true,
+  "result": {
+    "user": {
+      "id": 10001,
+      "username": "admin"
+    },
+    "menus": [
+      {
+        "id": 100,
+        "parentId": 0,
+        "name": "Test",
+        "url": null,
+        "isLeaf": false,
+        "isPrivate": false,
+        "top": 100,
+        "icon": "fa-user",
+        "children": [
+          {
+            "id": 101,
+            "parentId": 100,
+            "name": "List",
+            "url": "/list",
+            "isLeaf": true,
+            "isPrivate": false,
+            "top": 101,
+            "icon": null,
+            "children": []
+          },
+          {
+            "id": 102,
+            "parentId": 100,
+            "name": "Form",
+            "url": "/form",
+            "isLeaf": true,
+            "isPrivate": false,
+            "top": 102,
+            "icon": null,
+            "children": []
+          }
+        ]
+      },
+
+      {
+        "id": 97,
+        "parentId": 0,
+        "name": "List",
+        "url": "/list",
+        "isLeaf": true,
+        "isPrivate": true,
+        "top": 500,
+        "icon": "fa-circle-o text-aqua",
+        "children": []
+      },
+      {
+        "id": 98,
+        "parentId": 0,
+        "name": "Form",
+        "url": "/form",
+        "isLeaf": true,
+        "isPrivate": true,
+        "top": 501,
+        "icon": "fa-circle-o text-yellow",
+        "children": []
+      },
+      {
+        "id": 99,
+        "parentId": 0,
+        "name": "Widgets",
+        "url": "/widgets",
+        "isLeaf": true,
+        "isPrivate": true,
+        "top": 502,
+        "icon": "fa-circle-o text-red",
+        "children": []
+      }
+    ]
+  }
+}

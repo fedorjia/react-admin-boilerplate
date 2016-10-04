@@ -25,3 +25,4 @@ then visit <http://localhost:3000> you will get it.
 3. `redux` for better state management.
 4. `stylus` for precompiling styles.
 5. ES6 for advanced syntax.
+6. `AdminLTE` for beautiful dashboard theme.

@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react';
-//import { clearState } from '../../actions/state';
+import { clearViewState } from '../../actions/state';
 
 class BaseComponent extends Component {
 
@@ -7,17 +7,13 @@ class BaseComponent extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
-//		APP.fixLayout();
-	}
-
 	componentWillUnmount() {
-//		this.props.dispatch(clearState());
+		this.props.dispatch(clearViewState(this.constructor.name));
 	}
 }
 
-BaseComponent.propTypes = {
-	dispatch: PropTypes.func.isRequired
-};
+//BaseComponent.propTypes = {
+//	dispatch: PropTypes.func.isRequired
+//};
 
 export default BaseComponent;

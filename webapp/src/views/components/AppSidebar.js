@@ -68,6 +68,8 @@ class AppSidebar extends Component {
 	onClick() {
 		// clear search condiction when change sidebar menu
 		clearSearchCondition(location.pathname, null);
+		// scroll top when change menu
+		$('body').scrollTop(0);
 	}
 }
 

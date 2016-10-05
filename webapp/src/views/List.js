@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-//import BaseComponent from './generic/base-component';
 import { clearViewState } from '../actions/state';
 import TableView from './widgets/TableView';
 import Search from './widgets/Search';

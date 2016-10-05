@@ -49,6 +49,7 @@ export default function() {
 
 	/**
 	 * date format
+	 *  usage: new Date().format('yyyy/MM/dd hh:mm:ss');
 	 */
 	Date.prototype.format = function(format) {
 		var o = {

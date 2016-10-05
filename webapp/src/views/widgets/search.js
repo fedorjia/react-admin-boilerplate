@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
 import { load } from '../../actions/tableview';
-import common from '../../commons/common';
+import { saveSearchCondition } from '../../commons/index';
 import http from '../../utils/http';
 
 class Search extends Component {
@@ -254,7 +254,7 @@ class Search extends Component {
 		this.props.dispatch(load(__id(this.props), this.props.url, queryParams, 1, this.props.pageSize));
 		
         // store filter state
-		common.setFilterState(location.pathname, queryParams);
+		saveSearchCondition(location.pathname, queryParams);
 
 		// callback
 		if(this.state.callback) {

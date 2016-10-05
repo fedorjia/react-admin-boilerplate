@@ -1,4 +1,5 @@
 import {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
 
 import Alert from './widgets/Alert';
 import Confirm from './widgets/Confirm';
@@ -9,9 +10,13 @@ import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import AppSidebar from './components/AppSidebar';
 import Home from './Home';
-//import { browserHistory } from 'react-router';
 
 class App extends Component {
+
+	static propTypes = {
+		dispatch: PropTypes.func.isRequired,
+		children: PropTypes.node // Injected by React Router
+	};
 
 	componentDidMount() {
 		APP.refs.alert = this.refs.alert;
@@ -21,16 +26,11 @@ class App extends Component {
 	}
 
 	render() {
-		const {children} = this.props;
-		const props = {
-			publics: APP.menus.publics,
-			privates: APP.menus.privates
-		};
-		
+		const {children, dispatch} = this.props;
 		return (
 				<div className="wrapper">
-					<AppHeader/>
-					<AppSidebar { ...props }/>
+					<AppHeader dispatch={ dispatch }/>
+					<AppSidebar publics={ APP.menus.publics } privates={ APP.menus.privates }/>
 					<div className="content-wrapper">
 						{ this.renderChildren(children) }
 					</div>
@@ -49,12 +49,8 @@ class App extends Component {
 	}
 }
 
-App.propTypes = {
-	children: PropTypes.node // Injected by React Router
-};
-//
-//function mapStateToProps() {
-//	return {};
-//}
+function mapStateToProps() {
+	return {};
+}
 
-export default App;
+export default connect(mapStateToProps)(App);

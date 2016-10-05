@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from './Spinner';
 import Notifier from './Notifier';
 import { load } from '../../actions/tableview';
-import common from '../../commons/common';
+import { getSearchCondition } from '../../commons/index';
 
 class TableView extends Component {
 
@@ -146,7 +146,7 @@ function mapStateToProps(state, ownProps) {
 			error,
 			currentPage=1,
 			isLoading=false,
-			queryParams=common.getFilterState(location.pathname)
+			queryParams = getSearchCondition(location.pathname)
 	} = stat;
 
 	const pageSize = ownProps.pageSize;

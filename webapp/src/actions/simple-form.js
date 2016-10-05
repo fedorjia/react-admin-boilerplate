@@ -1,5 +1,5 @@
 import http from '../utils/http';
-import { form } from '../commons/action-types';
+import { simpleForm } from '../commons/action-types';
 
 export default {
 	/***
@@ -7,7 +7,7 @@ export default {
 	 */
 	submit(data) {
 		return {
-			actionType: form.SUBMIT,
+			actionType: simpleForm.SUBMIT,
 			callAPI: () => http.get('/static/assets/form.json', data)
 		};
 	}

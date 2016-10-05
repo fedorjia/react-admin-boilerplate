@@ -1,4 +1,4 @@
-import { form } from '../commons/action-types';
+import { simpleForm } from '../commons/action-types';
 import { createReducer } from '../utils/reducer-creator';
 
 const initialState = {
@@ -14,20 +14,20 @@ export default {
 		/***
 		 * submit
 		 */
-		[form.SUBMIT_REQUEST](state) {
+		[simpleForm.SUBMIT_REQUEST](state) {
 			return {
 				...state,
 				isLoading: true
 			};
 		},
-		[form.SUBMIT_SUCCESS](state, action) {
+		[simpleForm.SUBMIT_SUCCESS](state, action) {
 			return {
 				...state,
 				isLoading: false,
 				response: action.result
 			};
 		},
-		[form.SUBMIT_FAILURE](state, action) {
+		[simpleForm.SUBMIT_FAILURE](state, action) {
 			return {
 				...state,
 				isLoading: false,

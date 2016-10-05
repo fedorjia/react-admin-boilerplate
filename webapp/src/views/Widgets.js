@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Spinner from './widgets/Spinner';
-import { clearAllState } from '../actions/state';
+import { clearViewState } from '../actions/state';
 import { load } from '../actions/widgets';
 
 class Widgets extends Component {
@@ -12,17 +12,12 @@ class Widgets extends Component {
 		isLoading: PropTypes.bool
 	};
 
-
 	constructor(props) {
 		super(props);
 	}
 
 	componentWillUnmount() {
-		this.props.dispatch(clearAllState());
-	}
-
-	componentWillReceiveProps(nextProps) {
-
+		this.props.dispatch(clearViewState(this.constructor.name));
 	}
 
 	render() {

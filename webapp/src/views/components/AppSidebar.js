@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Link } from 'react-router';
-import common from '../../commons/common';
+import { clearSearchCondition } from '../../commons/index';
 
 class AppSidebar extends Component {
 	constructor(props) {
@@ -66,7 +66,7 @@ class AppSidebar extends Component {
 	}
 
 	onClick() {
-		common.clearFilterState(location.pathname, null);
+		clearSearchCondition(location.pathname, null);
 	}
 }
 

@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 //import BaseComponent from './generic/base-component';
-import { clearAllState } from '../actions/state';
+import { clearViewState } from '../actions/state';
 import TableView from './widgets/TableView';
 import Confirm from './widgets/Confirm';
 import Notifier from './widgets/Notifier';
 import Search from './widgets/Search';
 
 class List extends Component {
+	static propTypes = {
+		dispatch: PropTypes.func.isRequired
+	};
+
 	constructor(props) {
 		super(props);
 		this.url = '/static/assets/list.json';
@@ -16,7 +20,7 @@ class List extends Component {
 	}
 
 	componentWillUnmount() {
-		this.props.dispatch(clearAllState());
+		this.props.dispatch(clearViewState(this.constructor.name));
 	}
 
 	componentWillReceiveProps(nextProps) {

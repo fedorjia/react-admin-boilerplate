@@ -23,6 +23,8 @@ class Home extends Component {
 	}
 }
 
-function mapStateToProps() {}
+function mapStateToProps() {
+	return {};
+}
 
 export default connect(mapStateToProps)(Home);

@@ -2,10 +2,10 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import { clearAllState } from '../actions/state';
+import { clearViewState } from '../actions/state';
 import logoImage from '../../static/images/logo.png';
 import Alert from './widgets/Alert';
-import common from '../commons/common';
+import { setupApp } from '../commons/index';
 import action from '../actions/login';
 
 class Login extends Component {
@@ -23,12 +23,7 @@ class Login extends Component {
 	}
 
 	componentWillUnmount() {
-//		this.props.dispatch(clearOneState(this.constructor.name));
-		this.props.dispatch(clearAllState());
-	}
-
-	componentDidMount() {
-//		APP.fixLayout();
+		this.props.dispatch(clearViewState(this.constructor.name));
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -40,7 +35,7 @@ class Login extends Component {
 		// login success
 		if(nextProps.response && nextProps.response !== this.props.response) {
 			// setup app
-			common.setupApp(nextProps.response.data);
+			setupApp(nextProps.response.data);
 			// dashboard home page
 			browserHistory.push('/');
 		}

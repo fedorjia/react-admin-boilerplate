@@ -12,10 +12,10 @@
 import { createActionType } from 'action-types-creator';
 
 const types = {
-	root: [ 'CLEAR_ALL_STATE', 'CLEAR_ONE_STATE' ],
+	root: [ 'CLEAR_ALL_STATE', 'CLEAR_VIEW_STATE' ],
 	tableview: [ '_DATA_' ],
 	login: ['_LOGIN_'],
-	form: ['_SUBMIT_'],
+	simpleForm: ['_SUBMIT_'],
 	widgets: ['_LOAD_']
 };
 

@@ -1,7 +1,12 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
+import { clearAllState } from '../../actions/state';
 
 class AppHeader extends Component {
+	static propTypes = {
+		dispatch: PropTypes.func.isRequired
+	};
+
 	render() {
 		return (
 		<header className="main-header">
@@ -19,7 +24,7 @@ class AppHeader extends Component {
 			<div className="navbar-custom-menu">
 				<ul className="nav navbar-nav">
 					<li>
-						<a style={{ cursor: 'pointer' }} data-toggle="control-sidebar" onClick={ this.onSignout }>
+						<a style={{ cursor: 'pointer' }} data-toggle="control-sidebar" onClick={ this.onSignout.bind(this) }>
 							<i className="fa fa-sign-out"/>
 						</a>
 					</li>
@@ -31,6 +36,7 @@ class AppHeader extends Component {
 	}
 
 	onSignout() {
+		this.props.dispatch(clearAllState());
 		browserHistory.push('/login');
 	}
 }

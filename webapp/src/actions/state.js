@@ -10,14 +10,14 @@ export function clearAllState() {
 }
 
 /***
- * clear one state
+ * clear view state
  *
  * @param viewName
- *  !important: viewName.lowercaseFirstLetter must be reducer name
+ *  !important: viewName.lowercaseFirstLetter must be equals reducer name
  */
-export function clearOneState(viewName) {
+export function clearViewState(viewName) {
 	return {
-		type: root.CLEAR_ONE_STATE,
+		type: root.CLEAR_VIEW_STATE,
 		reducer: viewName.lowercaseFirstLetter()
 	};
 }

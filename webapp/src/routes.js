@@ -3,7 +3,7 @@ import { Router, Route, IndexRedirect } from 'react-router';
 import App from './views/App';
 import Login from './views/Login';
 import List from './views/List';
-import MForm from './views/MForm';
+import MForm from './views/SimpleForm';
 import Widgets from './views/Widgets';
 
 export default (

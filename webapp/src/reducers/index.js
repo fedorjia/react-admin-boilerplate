@@ -6,14 +6,14 @@ import { root } from '../commons/action-types';
 import tableview from './tableview';
 import login from './login';
 import list from './list';
-import mform from './mform';
+import simpleForm from './simple-form';
 import widgets from './widgets';
 
 const rawReducers = {
 	tableview,
 	login,
 	list,
-	mform,
+	simpleForm,
 	widgets
 };
 
@@ -44,9 +44,9 @@ const rootReducer = (state, action) => {
 	}
 
 	/**
-	 * clear one state
+	 * clear view state
 	 */
-	if (action.type === root.CLEAR_ONE_STATE) {
+	if (action.type === root.CLEAR_VIEW_STATE) {
 		const newState = {};
 		for(const prop in mReducers) {
 			if(mReducers.hasOwnProperty(prop)) {

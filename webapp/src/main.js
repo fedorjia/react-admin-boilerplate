@@ -15,8 +15,8 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 import http from './utils/http';
-import common from './commons/common';
-import extension from './commons/extension';
+import { setupApp } from './commons/index';
+import extension from './utils/extension';
 import Root from './Root';
 
 window.APP = {};
@@ -60,7 +60,7 @@ $(function() {
 	} else {
 		// login
 		http.get('/static/assets/login.json').then((result) => {
-			common.setupApp(result.data);
+			setupApp(result.data);
 			__render();
 		});
 	}

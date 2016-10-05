@@ -1,16 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
+
 import Notifier from './widgets/Notifier';
 import Spinner from './widgets/Spinner';
-import { browserHistory } from 'react-router';
-import action from '../actions/mform';
+import { clearViewState } from '../actions/state';
+import action from '../actions/simple-form';
 
-class MForm extends Component {
+class SimpleForm extends Component {
 
 	static propTypes = {
-		handleSubmit: PropTypes.func.isRequired,
 		dispatch: PropTypes.func.isRequired,
+		handleSubmit: PropTypes.func.isRequired,
 		error: PropTypes.object,
 		response: PropTypes.object
 	};
@@ -19,6 +21,10 @@ class MForm extends Component {
 
 	constructor(props) {
 		super(props);
+	}
+
+	componentWillUnmount() {
+		this.props.dispatch(clearViewState(this.constructor.name));
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -108,7 +114,7 @@ const validate = (values) => {
 };
 
 function mapStateToProps(state) {
-	const mform = state.mform || {};
+	const mform = state.simpleForm || {};
 //	const { formData={} } = mform;
 	return {
 		initialValues : { name: 'fedor' },
@@ -116,13 +122,13 @@ function mapStateToProps(state) {
 	};
 }
 
-MForm = reduxForm({
-	form: 'MForm',
+SimpleForm = reduxForm({
+	form: 'SimpleForm',
 	validate
-})(MForm);
+})(SimpleForm);
 
-MForm = connect(
+SimpleForm = connect(
 	mapStateToProps
-)(MForm);
+)(SimpleForm);
 
-export default MForm;
+export default SimpleForm;

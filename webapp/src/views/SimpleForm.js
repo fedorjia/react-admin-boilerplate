@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 
-import Notifier from './widgets/Notifier';
 import Spinner from './widgets/Spinner';
 import { clearViewState } from '../actions/state';
 import action from '../actions/simple-form';
@@ -13,6 +12,7 @@ class SimpleForm extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
 		handleSubmit: PropTypes.func.isRequired,
+		initialValues: PropTypes.object,
 		error: PropTypes.object,
 		response: PropTypes.object
 	};
@@ -27,9 +27,13 @@ class SimpleForm extends Component {
 		this.props.dispatch(clearViewState(this.constructor.name));
 	}
 
+	componentDidMount() {
+		this.props.dispatch(action.load());
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.error && nextProps.error !== this.props.error) {
-			this.refs.notifier.warning(nextProps.error.message);
+			APP.refs.notifier.warning(nextProps.error.message);
 			return;
 		}
 
@@ -40,39 +44,38 @@ class SimpleForm extends Component {
 
 	render() {
 		let {
-			handleSubmit,
-			isLoading,
+				handleSubmit,
+				isLoading,
 		} = this.props;
 
 		return (
-			<div className="form-view">
-				<section className="content-header">
-					Form
-				</section>
-				<section className="content">
-					<form className="box box-default box-form-split" onSubmit={ handleSubmit(this.onSubmitForm.bind(this)) }>
-						<div className="box-body">
-							<div className="row">
-								<div className="col-md-12">
-									<Field name="name" type="text" component={renderField} label="name"/>
-									<Field name="purchasingPrice" type="number" component={renderField} label="purchasingPrice"/>
-									<Field name="sellingPrice" type="number" component={renderField} label="sellingPrice"/>
-									<Field name="note" type="textarea" component={renderTextarea} label="note"/>
+				<div className="form-view">
+					<section className="content-header">
+						Form
+					</section>
+					<section className="content">
+						<form className="box box-default box-form-split" onSubmit={ handleSubmit(this.onSubmitForm.bind(this)) }>
+							<div className="box-body">
+								<div className="row">
+									<div className="col-md-12">
+										<Field name="name" type="text" component={renderField} label="name"/>
+										<Field name="mobile" type="number" component={renderField} label="mobile"/>
+										<Field name="age" type="number" component={renderField} label="age"/>
+										<Field name="note" type="textarea" component={renderTextarea} label="note"/>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div className="box-footer">
-							<button type="submit" className="btn btn-primary longer" disabled={isLoading}>
-								{ isLoading? <i className="fa fa-circle-o-notch fa-spin"/> : <i className="fa fa-paper-plane"/> } &nbsp;&nbsp;Submit
-							</button>
-						</div>
-					</form>
-				</section>
+							<div className="box-footer">
+								<button type="submit" className="btn btn-primary longer" disabled={isLoading}>
+									{ isLoading? <i className="fa fa-circle-o-notch fa-spin"/> : <i className="fa fa-paper-plane"/> } &nbsp;&nbsp;Submit
+								</button>
+							</div>
+						</form>
+					</section>
 
-				<Notifier ref="notifier"/>
-				{ isLoading ? <Spinner cls="ccenter"/> : '' }
-			</div>
+					{ isLoading ? <Spinner cls="ccenter"/> : '' }
+				</div>
 		);
 	}
 
@@ -84,19 +87,19 @@ class SimpleForm extends Component {
 }
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
-	<div className="form-group">
+		<div className="form-group">
 			<label>{ label }</label>
 			<input className="form-control" {...input} placeholder={label} type={type}/>
 			{touched && error && <span className="error-msg">{error}</span>}
-	</div>
+		</div>
 );
 
 const renderTextarea = ({ input, label, type, meta: { touched, error } }) => (
-	<div className="form-group">
-		<label>{ label }</label>
-		<textarea className="form-control" {...input} placeholder={label} type={type}/>
-		{touched && error && <span className="error-msg">{error}</span>}
-	</div>
+		<div className="form-group">
+			<label>{ label }</label>
+			<textarea className="form-control" {...input} placeholder={label} type={type}/>
+			{touched && error && <span className="error-msg">{error}</span>}
+		</div>
 );
 
 const validate = (values) => {
@@ -104,22 +107,17 @@ const validate = (values) => {
 	if (!values.name) {
 		errors.name = 'name could not be empty';
 	}
-    if (!values.purchasingPrice) {
-        errors.purchasingPrice = 'purchase price could not be empty';
-    }
-    if (!values.sellingPrice) {
-        errors.sellingPrice = 'saling price could not be empty';
-    }
+	if (!values.mobile) {
+		errors.mobile = 'mobile could not be empty';
+	}
+	if (!values.age) {
+		errors.age = 'age could not be empty';
+	}
 	return errors;
 };
 
 function mapStateToProps(state) {
-	const mform = state.simpleForm || {};
-//	const { formData={} } = mform;
-	return {
-		initialValues : { name: 'fedor' },
-		...mform
-	};
+	return state.simpleForm || {};
 }
 
 SimpleForm = reduxForm({

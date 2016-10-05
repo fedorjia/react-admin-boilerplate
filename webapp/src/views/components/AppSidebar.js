@@ -66,6 +66,7 @@ class AppSidebar extends Component {
 	}
 
 	onClick() {
+		// clear search condiction when change sidebar menu
 		clearSearchCondition(location.pathname, null);
 	}
 }

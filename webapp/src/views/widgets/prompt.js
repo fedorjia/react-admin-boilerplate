@@ -1,48 +1,58 @@
 import {Component} from 'react';
-class Prompt extends Component {
+import { is } from '../../utils/index';
 
+const initialState = {
+	message: '',
+	yesText: 'YES',
+	noText: 'NO',
+	yesClass: 'btn-link',
+	noClass: '',
+	placeholder: '',
+	callback: undefined
+};
+const _state = Object.assign({}, initialState);
+
+class Prompt extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			options: {
-				yesText: '是',
-				noText: '否'
-			}
-		};
+		this.state = _state;
 	}
 
 	render() {
-		const { yesText, noText, msg, placeholder } = this.state.options;
-
+		const { yesText, noText, yesClass, noClass, message, placeholder } = this.state;
 		return (
-				<div className="modal fade prompt-modal" tabIndex="-1" role="dialog"
-					aria-labelledby="mySmallModalLabel">
-					<div className="modal-dialog modal-sm">
-						<div className="modal-content">
-							<div className="modal-body">
-								<div className="message">{ msg }</div>
-								<div className="form-group">
-									<input type="text" ref="content" className="form-control" placeholder={ placeholder }/>
-								</div>
-								<div className="footer">
-									<div className="btn btn-confirm" onClick={ this.onClickYes.bind(this) }>
-										{ yesText }
-									</div>
-									<div className="btn btn-cancel" onClick={ this.onClickNo.bind(this) }>
-										{ noText }
-									</div>
-								</div>
+		<div className="modal fade prompt-modal" tabIndex="-1" role="dialog"
+			aria-labelledby="mySmallModalLabel">
+			<div className="modal-dialog modal-sm">
+				<div className="modal-content">
+					<div className="modal-body">
+						<div className="message">{ message }</div>
+						<div className="form-group">
+							<input type="text" ref="content" className="form-control" placeholder={ placeholder }/>
+						</div>
+						<div className="footer">
+							<div className={`btn btn-confirm ${yesClass}` } onClick={ this.onClickYes.bind(this) }>
+								{ yesText }
+							</div>
+							<div className={`btn btn-cancel ${noClass}` } onClick={ this.onClickNo.bind(this) }>
+								{ noText }
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 		);
 	}
 
 	show(options) {
-		this.setState({
-			options: Object.assign(this.state.options, options || {})
-		});
+		if(is.string(options)) {
+			this.setState({ message: options });
+		} else if(is.object(options)) {
+			this.setState(Object.assign(this.state, options));
+		} else {
+			throw new Error('not support alert type');
+		}
 
 		const t = $('.modal-backdrop').length === 0 ? 0 : 480;
 		setTimeout(() => {
@@ -54,7 +64,10 @@ class Prompt extends Component {
 	}
 
 	hide() {
+		$(this.refs.content).val('');
 		$('.prompt-modal').modal('hide');
+		// restore state
+		this.setState(initialState);
 	}
 
 	onClickYes() {
@@ -62,13 +75,17 @@ class Prompt extends Component {
 		if(!value) {
 			return;
 		}
-		this.state.options.callback(0, value);
 		this.hide();
+		if(this.state.callback) {
+			this.state.callback(1, value);
+		}
 	}
 
 	onClickNo() {
-		this.state.options.callback(1);
 		this.hide();
+		if(this.state.callback) {
+			this.state.callback(0);
+		}
 	}
 }
 

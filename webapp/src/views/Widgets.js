@@ -46,11 +46,21 @@ class Widgets extends Component {
 
 	onAlert() {
 		APP.refs.alert.show('Alert');
+
+		// another usage
+//		APP.refs.alert.show({
+//			message: 'Alert',
+//			buttonText: 'YES',
+//			callback: () => {
+//				alert('close alert modal');
+//			}
+//		});
 	}
 	
 	onConfirm() {
 		APP.refs.confirm.show({
-			msg: 'Confirm',
+			message: 'Confirm',
+			yesText: 'OK',
 			callback: (index) => {
 			}
 		});
@@ -58,8 +68,9 @@ class Widgets extends Component {
 	
 	onPrompt() {
 		APP.refs.prompt.show({
-			msg: 'Prompt',
-			placeholder: 'placeholder',
+			message: 'Prompt',
+			noText: 'NO,Thank you',
+			placeholder: 'this is placeholder',
 			callback: (index) => {
 			}
 		});

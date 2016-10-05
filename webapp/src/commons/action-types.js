@@ -15,7 +15,7 @@ const types = {
 	root: [ 'CLEAR_ALL_STATE', 'CLEAR_VIEW_STATE' ],
 	tableview: [ '_DATA_' ],
 	login: ['_LOGIN_'],
-	simpleForm: ['_SUBMIT_'],
+	simpleForm: ['_SUBMIT_', '_LOAD_'],
 	widgets: ['_LOAD_']
 };
 

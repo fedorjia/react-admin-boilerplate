@@ -21,7 +21,7 @@ class Search extends Component {
 	}
 
 	render() {
-		const cmp = this.renderItems(this.state.items);
+		const cmps = this.renderItems(this.state.items);
 		return (
 			<div className="modal fade search-modal" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 				<div className="modal-dialog modal-sm" role="document">
@@ -33,7 +33,7 @@ class Search extends Component {
 
 						<div className="modal-body">
 							<form>
-								{ cmp }
+								{ cmps }
 							</form>
 						</div>
 
@@ -90,7 +90,7 @@ class Search extends Component {
 						<div key={ key } className="form-group">
 							<label className="control-label ">{ item.label }</label>
 							<select name={ item.name } ref={ item.name } className="form-control options">
-								<option key="all" value="all">全部</option>
+								<option key="-1" value="-1">All</option>
 								{ item.data.map((option) => <option key={ option.value } value={ option.value }>{ option.text }</option>) }
 							</select>
 						</div>
@@ -107,7 +107,7 @@ class Search extends Component {
                                     ref={ item.name } name={ item.name } value={ comboValue }
                                     searchable={ true } clearable={ false }
                                     onChange={ this.onChangeCombo.bind(this, comboKey) }
-                                    placeholder={`请选择${item.label}`}/>
+                                    placeholder={`Select${item.label}`}/>
                         </div>
                     );
                     break;
@@ -123,13 +123,14 @@ class Search extends Component {
                                           ref={ item.name } name={ item.name } value={ comboValue }
                                           searchable={ true } clearable={ false }
                                           onChange={ this.onChangeCombo.bind(this, comboKey) }
-                                          placeholder={`请选择${item.label}`}/>
+                                          placeholder={`Select${item.label}`}/>
                         </div>
                     );
                     break;
                 }
 
 				default:
+					// input
 					el = (
 						<div key={ key } className="form-group">
 							<label className="control-label">{ item.label }</label>
@@ -146,18 +147,16 @@ class Search extends Component {
 
     loadComboAsync(url) {
         return http.get(url)
-            .then((resp) => {
-                if(resp.success) {
-                    const options = resp.result.items.map((item) => {
-                        return {
-                            id: item.id,
-                            name: item.name
-                        }
-                    });
-                    return {
-                        options: options
-                    };
-                }
+            .then((result) => {
+	            const options = result.items.map((item) => {
+		            return {
+			            id: item.id,
+			            name: item.name
+		            }
+	            });
+	            return {
+		            options: options
+	            };
             });
     }
 
@@ -191,6 +190,9 @@ class Search extends Component {
 		$('.search-modal').modal('hide');
 	}
 
+	/***
+	 * reset
+	 */
 	onReset() {
 		$('.search-modal input').val(null);
 		$('.search-modal select').val('all');
@@ -214,12 +216,18 @@ class Search extends Component {
         }
 	}
 
+	/***
+	 * change combo
+	 */
     onChangeCombo(comboKey, val) {
         const obj = {};
         obj[comboKey] = val;
         this.setState(obj);
     }
 
+	/***
+	 * search
+	 */
 	onSearch() {
 		this.hide();
 		let queryParams = { };

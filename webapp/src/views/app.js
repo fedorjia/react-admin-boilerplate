@@ -19,6 +19,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
+		// global refs
 		APP.refs.alert = this.refs.alert;
 		APP.refs.confirm = this.refs.confirm;
 		APP.refs.prompt = this.refs.prompt;

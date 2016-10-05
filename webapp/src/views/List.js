@@ -1,11 +1,9 @@
-import { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 //import BaseComponent from './generic/base-component';
 import { clearViewState } from '../actions/state';
 import TableView from './widgets/TableView';
-import Confirm from './widgets/Confirm';
-import Notifier from './widgets/Notifier';
 import Search from './widgets/Search';
 
 class List extends Component {
@@ -25,7 +23,7 @@ class List extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.error && nextProps.error !== this.props.error) {
-			this.refs.notifier.warning(nextProps.emsg);
+			APP.refs.notifier.warning(nextProps.emsg);
 		}
 	}
 
@@ -42,12 +40,10 @@ class List extends Component {
 							<a className="btn wrap primary" onClick={ this.onSearch.bind(this) }><i className="fa fa-search"/>Search</a>
 						</div>
 					</div>
-					<TableView url={ this.url } pageSize={ this.pageSize } columns={ this.columns() }/>
+					<TableView ref="tableview" url={ this.url } pageSize={ this.pageSize } columns={ this.columns() }/>
 				</div>
 			</section>
 
-			<Notifier ref="notifier"/>
-			<Confirm ref="confirm"/>
 			<Search ref="search" url={ this.url } pageSize={ this.pageSize } dispatch={ this.props.dispatch }/>
 		</div>
 		);

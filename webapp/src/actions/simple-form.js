@@ -10,5 +10,15 @@ export default {
 			actionType: simpleForm.SUBMIT,
 			callAPI: () => http.get('/static/assets/form.json', data)
 		};
+	},
+
+	/***
+	 * load
+	 */
+	load() {
+		return {
+			actionType: simpleForm.LOAD,
+			callAPI: () => http.get('/static/assets/item.json')
+		};
 	}
 };

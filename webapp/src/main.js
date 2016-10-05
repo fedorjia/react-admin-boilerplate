@@ -29,7 +29,7 @@ extension();
 function __globals() {
 	APP.user = null;
 	APP.menus = {};
-	APP.filterStates = {};
+	APP.conditions = [];
 	APP.refs = {};
 }
 

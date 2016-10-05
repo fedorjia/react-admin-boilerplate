@@ -33,8 +33,8 @@ export const saveSearchCondition = (name, value) => {
 	}
 	value = value || {};
 	let store = null;
-	for (let i = 0; i < APP.filterStates.length; i++) {
-		const filter = APP.filterStates[i];
+	for (let i = 0; i < APP.conditions.length; i++) {
+		const filter = APP.conditions[i];
 		for (let pro in filter) {
 			if (pro === name) {
 				store = filter;
@@ -46,7 +46,7 @@ export const saveSearchCondition = (name, value) => {
 	} else {
 		const tmp = {};
 		tmp[name] = value;
-		APP.filterStates.push(tmp);
+		APP.conditions.push(tmp);
 	}
 };
 
@@ -56,8 +56,8 @@ export const saveSearchCondition = (name, value) => {
  */
 export const getSearchCondition = (name) => {
 	let value;
-	for (let i = 0; i < APP.filterStates.length; i++) {
-		const filter = APP.filterStates[i];
+	for (let i = 0; i < APP.conditions.length; i++) {
+		const filter = APP.conditions[i];
 		for (let pro in filter) {
 			if (pro === name) {
 				if (filter.hasOwnProperty(pro)) {
@@ -72,8 +72,8 @@ export const getSearchCondition = (name) => {
 
 
 /***
- * clear search condiction
+ * clear search condictions
  */
 export const clearSearchCondition = () => {
-	APP.filterStates = [];
+	APP.conditions = [];
 };

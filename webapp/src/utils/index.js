@@ -44,6 +44,10 @@ export const is = {
 		return typeof str === 'string';
 	},
 
+	object(str) {
+		return typeof str === 'object';
+	},
+
 	integer(str) {
 		return !isNaN(str) && (str*1 === parseInt(str, 10));
 	},

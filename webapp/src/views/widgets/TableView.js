@@ -41,7 +41,7 @@ class TableView extends Component {
 
 	componentDidMount() {
 		if (this.props.isAutoLoad === true) {
-			this.loadData(this.props.currentPage, this.props.pageSize);
+			this.load(this.props.currentPage, this.props.pageSize);
 		}
 	}
 
@@ -89,24 +89,24 @@ class TableView extends Component {
 		);
 	}
 
-	reloadData() {
-		this.loadData(1, this.props.pageSize);
+	reload() {
+		this.load(1, this.props.pageSize);
 	}
 
-	loadData(pageIndex, pageSize) {
+	load(pageIndex, pageSize) {
 		this.props.dispatch(load(__id(this.props), this.props.url, this.props.queryParams || {}, pageIndex, pageSize));
 	}
 
 	onSetPage(index) {
-		this.loadData(index+1, this.props.pageSize);
+		this.load(index+1, this.props.pageSize);
 	}
 
 	onSetPageSize(pageSize) {
-		this.loadData(1, pageSize);
+		this.load(1, pageSize);
 	}
 
 	refresh() {
-		this.loadData(this.props.currentPage, this.props.pageSize);
+		this.load(this.props.currentPage, this.props.pageSize);
 	}
 
 	getSelectedRowIds() {

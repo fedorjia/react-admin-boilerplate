@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { clearViewState } from '../actions/state';
+import { clearViewState } from '../store/actions/state';
 import TableView from './widgets/TableView';
 import Search from './widgets/Search';
 

@@ -2,11 +2,11 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import { clearViewState } from '../actions/state';
+import { clearViewState } from '../store/actions/state';
 import logoImage from '../../static/images/logo.png';
 import Alert from './widgets/Alert';
 import { setupApp } from '../commons/index';
-import action from '../actions/login';
+import action from '../store/actions/login';
 
 class Login extends Component {
 

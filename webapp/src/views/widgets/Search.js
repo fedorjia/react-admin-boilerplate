@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
-import { load } from '../../actions/tableview';
+import { load } from '../../store/actions/tableview';
 import { saveSearchCondition } from '../../commons/index';
 import http from '../../utils/http';
 

@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 import { routerReducer as routing } from 'react-router-redux';
 
 import { root } from '../commons/action-types';
-import tableview from './tableview';
+import tableview from './tableView';
 import login from './login';
 import list from './list';
 import simpleForm from './simple-form';

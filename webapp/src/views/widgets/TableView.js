@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Spinner from './Spinner';
 import Notifier from './Notifier';
-import { load } from '../../actions/tableview';
+import { load } from '../../store/actions/tableview';
 import { getSearchCondition } from '../../commons/index';
 
 class TableView extends Component {

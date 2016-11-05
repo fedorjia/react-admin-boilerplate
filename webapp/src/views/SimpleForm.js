@@ -4,8 +4,8 @@ import { browserHistory } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 
 import Spinner from './widgets/Spinner';
-import { clearViewState } from '../actions/state';
-import action from '../actions/simple-form';
+import { clearViewState } from '../store/actions/state';
+import action from '../store/actions/simple-form';
 
 class SimpleForm extends Component {
 

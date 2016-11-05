@@ -17,7 +17,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 import http from './utils/http';
 import { setupApp } from './commons/index';
 import extension from './utils/extension';
-import Root from './Root';
+import Root from './R1oot';
 
 window.APP = {};
 // extensions

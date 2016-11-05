@@ -2,8 +2,8 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Spinner from './widgets/Spinner';
-import { clearViewState } from '../actions/state';
-import { load } from '../actions/widgets';
+import { clearViewState } from '../store/actions/state';
+import { load } from '../store/actions/widgets';
 
 class Widgets extends Component {
 

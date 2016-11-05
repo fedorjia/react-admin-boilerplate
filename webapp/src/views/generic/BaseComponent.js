@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react';
-import { clearViewState } from '../../actions/state';
+import { clearViewState } from '../../store/actions/state';
 
 class BaseComponent extends Component {
 

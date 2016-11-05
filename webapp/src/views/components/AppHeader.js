@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import { clearAllState } from '../../actions/state';
+import { clearAllState } from '../../store/actions/state';
 
 class AppHeader extends Component {
 	static propTypes = {

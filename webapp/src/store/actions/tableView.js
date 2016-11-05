@@ -1,5 +1,5 @@
-import http from '../utils/http';
-import { tableview } from '../commons/action-types';
+import http from '../../utils/http';
+import { tableview } from '..//action-types';
 
 export function load(id, url, params = {}, pageIndex, pageSize) {
 	if(typeof(pageIndex) !== 'undefined') {

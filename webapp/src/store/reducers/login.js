@@ -1,5 +1,5 @@
-import { login } from '../commons/action-types';
-import { createReducer } from '../utils/reducer-creator';
+import { login } from '../action-types';
+import { createReducer } from '../../utils/reducer-creator';
 
 const initialState = {
 	isLoading: false,

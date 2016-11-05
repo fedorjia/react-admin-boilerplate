@@ -10,14 +10,14 @@ import { render } from 'react-dom';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import configureStore from './store/configureStore';
+import configureStore from './store/index';
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 import http from './utils/http';
 import { setupApp } from './commons/index';
 import extension from './utils/extension';
-import Root from './R1oot';
+import Root from './Root';
 
 window.APP = {};
 // extensions

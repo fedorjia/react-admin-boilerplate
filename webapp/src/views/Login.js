@@ -59,7 +59,7 @@ class Login extends Component {
 						</div>
 						<div className="btn btn-success" style={ { width: '100%' } } disabled={isLoading} onClick={ this.onSubmit.bind(this) }>
 						{ isLoading? <i className="fa fa-circle-o-notch fa-spin"/> : <i className="fa fa-paper-plane"/> }
-						&nbsp;&nbsp;登录
+						&nbsp;&nbsp;Login
 						</div>
 					</div>
 				</div>

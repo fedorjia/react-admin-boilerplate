@@ -1,4 +1,4 @@
-import { root } from '../commons/action-types';
+import { root } from '../action-types';
 
 /***
  * clear all state

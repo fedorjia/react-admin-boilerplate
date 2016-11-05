@@ -1,4 +1,4 @@
-import { widgets } from '../commons/action-types';
+import { widgets } from '../action-types';
 
 /***
  *  load

@@ -1,5 +1,5 @@
-import { login } from '../commons/action-types';
-import http  from '../utils/http';
+import { login } from '../action-types';
+import http  from '../../utils/http';
 
 export default {
 	/***

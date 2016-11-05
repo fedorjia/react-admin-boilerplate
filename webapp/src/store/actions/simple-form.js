@@ -1,5 +1,5 @@
-import http from '../utils/http';
-import { simpleForm } from '../commons/action-types';
+import http from '../../utils/http';
+import { simpleForm } from '../action-types';
 
 export default {
 	/***

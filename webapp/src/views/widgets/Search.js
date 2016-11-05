@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import Select from 'react-select';
 import { load } from '../../store/actions/tableview';
-import { saveSearchCondition } from '../../commons/index';
+import { saveSearchCondition } from '../../commons';
 import http from '../../utils/http';
 
 class Search extends Component {

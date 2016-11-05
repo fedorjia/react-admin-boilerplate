@@ -1,5 +1,5 @@
-import { tableview } from '../commons/action-types';
-import { createReducer } from '../utils/reducer-creator';
+import { tableview } from '../action-types';
+import { createReducer } from '../../utils/reducer-creator';
 
 const initialState = {};
 

@@ -1,5 +1,5 @@
-import { widgets } from '../commons/action-types';
-import { createReducer } from '../utils/reducer-creator';
+import { widgets } from '../action-types';
+import { createReducer } from '../../utils/reducer-creator';
 
 const initialState = {
 	isLoading: false

@@ -48,6 +48,10 @@ module.exports = {
 		new webpack.optimize.UglifyJsPlugin({
 			compress: {
 				warnings: false
+			},
+			mangle: {
+				except: ['$super', '$', 'exports', 'require'],
+				keep_fnames: true  // kepp class name
 			}
 		}),
 		new webpack.optimize.OccurenceOrderPlugin(),

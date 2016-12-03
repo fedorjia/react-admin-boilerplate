@@ -7,7 +7,7 @@
 
 `npm run dev` 
 
-then visit <http://localhost:3000> you will get it.
+then visit http://localhost:3000 you will get it.
 
 ![image](webapp/static/images/QQ20161004-1.jpg)
 
